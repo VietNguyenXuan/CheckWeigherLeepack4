@@ -1,0 +1,2 @@
+delete from ProductManagement
+DELETE FROM SQLITE_SEQUENCE WHERE name='ProductManagement'

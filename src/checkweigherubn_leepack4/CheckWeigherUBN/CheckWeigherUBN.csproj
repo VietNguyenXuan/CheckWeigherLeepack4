@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6F1E71F0-EB9D-4804-9BFE-7F3AA21A714A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CheckWeigherUBN</RootNamespace>
+    <AssemblyName>CheckWeigherUBN</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>weigher_icon.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;unusePlcServer</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.0.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EPPlus 4.0.2\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SQLitex64\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alarms\FrmAlarmViews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alarms\FrmAlarmViews.Designer.cs">
+      <DependentUpon>FrmAlarmViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ASingleInstanceApp\ProgramInfo.cs" />
+    <Compile Include="ASingleInstanceApp\SingleInstance.cs" />
+    <Compile Include="ASingleInstanceApp\Win32API.cs" />
+    <Compile Include="Changover\frmGroupProduction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Changover\frmGroupProduction.Designer.cs">
+      <DependentUpon>frmGroupProduction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB\AlarmDB.cs" />
+    <Compile Include="Dialogs\FrmConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmConfirmation.Designer.cs">
+      <DependentUpon>FrmConfirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmWarning.Designer.cs">
+      <DependentUpon>FrmWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelHandle\AlarmReportExcel.cs" />
+    <Compile Include="ExcelHandle\ExcelReportByDateAndTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExcelHandle\ExcelReportByDateAndTime.Designer.cs">
+      <DependentUpon>ExcelReportByDateAndTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelHandle\ExcelReportByDateShiftSKU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExcelHandle\ExcelReportByDateShiftSKU.Designer.cs">
+      <DependentUpon>ExcelReportByDateShiftSKU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelHandle\ExcelReportUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExcelHandle\ExcelReportUC.Designer.cs">
+      <DependentUpon>ExcelReportUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelHandle\frmExportExcelByDateTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelHandle\frmExportExcelByDateTime.Designer.cs">
+      <DependentUpon>frmExportExcelByDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain_ChangeProduction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualMode\BufferSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManualMode\BufferSettings.Designer.cs">
+      <DependentUpon>BufferSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManualMode\ButtonOnOffInvert.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManualMode\ButtonOnOffInvert.Designer.cs">
+      <DependentUpon>ButtonOnOffInvert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManualMode\DisplayPLCMemory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualMode\DisplayPLCMemory.Designer.cs">
+      <DependentUpon>DisplayPLCMemory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManualMode\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManualMode\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManualMode\UserControl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManualMode\UserControl2.Designer.cs">
+      <DependentUpon>UserControl2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\AlarmType.cs" />
+    <Compile Include="Objects\GlobalEnum.cs" />
+    <Compile Include="Objects\Shift.cs" />
+    <Compile Include="ReportExcel\AutoReportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\frmPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\frmPassword.Designer.cs">
+      <DependentUpon>frmPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\PasswordChange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\PasswordChange.Designer.cs">
+      <DependentUpon>PasswordChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\CheckboxPermission.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\CheckboxPermission.Designer.cs">
+      <DependentUpon>CheckboxPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\CheckBoxWithBorder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\CheckBoxWithBorder.Designer.cs">
+      <DependentUpon>CheckBoxWithBorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CircularProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConvoyerSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConvoyerSpeed.Designer.cs">
+      <DependentUpon>ConvoyerSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseBaseObject.cs" />
+    <Compile Include="DB\CommunicationsDB.cs" />
+    <Compile Include="DB\ConfigurationDB.cs" />
+    <Compile Include="DB\DataLogDB.cs" />
+    <Compile Include="DB\ProductManagementDB.cs" />
+    <Compile Include="DB\UserDB.cs" />
+    <Compile Include="DB\UserGroupDB.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="DeviceType.cs" />
+    <Compile Include="ErrorConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorConnection.Designer.cs">
+      <DependentUpon>ErrorConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorLog.Designer.cs">
+      <DependentUpon>ErrorLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="eSQLiteDatabaseDataType.cs" />
+    <Compile Include="ExcelHandle\ExcelProductImport.cs" />
+    <Compile Include="frmDisplayErrorConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDisplayErrorConnection.Designer.cs">
+      <DependentUpon>frmDisplayErrorConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportProductByExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportProductByExcel.Designer.cs">
+      <DependentUpon>frmImportProductByExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoadSKU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoadSKU.Designer.cs">
+      <DependentUpon>frmLoadSKU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\frmMatrixPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\frmMatrixPermission.Designer.cs">
+      <DependentUpon>frmMatrixPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProductEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProductEdit.Designer.cs">
+      <DependentUpon>frmProductEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelHandle\ExcelHandleBaseClass.cs" />
+    <Compile Include="FileUtils.cs" />
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManualMode\frmManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualMode\frmManual.Designer.cs">
+      <DependentUpon>frmManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduct.Designer.cs">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelHandle\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelHandle\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MachineStatus.Designer.cs">
+      <DependentUpon>MachineStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumericKeyboard\DigitKeyPad.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumericKeyboard\DigitKeyPad.Designer.cs">
+      <DependentUpon>DigitKeyPad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumericKeyboard\frmKeyBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumericKeyboard\frmKeyBoard.Designer.cs">
+      <DependentUpon>frmKeyBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumericKeyboard\Keyboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumericKeyboard\Keyboard.Designer.cs">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\BaseObject.cs" />
+    <Compile Include="Objects\CommunicationsType.cs" />
+    <Compile Include="Objects\ConfigurationTypes.cs" />
+    <Compile Include="Objects\DataLogType.cs" />
+    <Compile Include="Objects\ProductManagementType.cs" />
+    <Compile Include="Objects\UserGroupType.cs" />
+    <Compile Include="Objects\UserType.cs" />
+    <Compile Include="OperationInformation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OperationInformation.Designer.cs">
+      <DependentUpon>OperationInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLCFxCommunication.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Alarms\FrmAlarmViews.resx">
+      <DependentUpon>FrmAlarmViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Changover\frmGroupProduction.resx">
+      <DependentUpon>frmGroupProduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmConfirmation.resx">
+      <DependentUpon>FrmConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmWarning.resx">
+      <DependentUpon>FrmWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelHandle\ExcelReportByDateAndTime.resx">
+      <DependentUpon>ExcelReportByDateAndTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelHandle\ExcelReportByDateShiftSKU.resx">
+      <DependentUpon>ExcelReportByDateShiftSKU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelHandle\ExcelReportUC.resx">
+      <DependentUpon>ExcelReportUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelHandle\frmExportExcelByDateTime.resx">
+      <DependentUpon>frmExportExcelByDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMode\BufferSettings.resx">
+      <DependentUpon>BufferSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMode\ButtonOnOffInvert.resx">
+      <DependentUpon>ButtonOnOffInvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMode\DisplayPLCMemory.resx">
+      <DependentUpon>DisplayPLCMemory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMode\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMode\UserControl2.resx">
+      <DependentUpon>UserControl2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\frmPassword.resx">
+      <DependentUpon>frmPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\PasswordChange.resx">
+      <DependentUpon>PasswordChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\CheckboxPermission.resx">
+      <DependentUpon>CheckboxPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\CheckBoxWithBorder.resx">
+      <DependentUpon>CheckBoxWithBorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConvoyerSpeed.resx">
+      <DependentUpon>ConvoyerSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorConnection.resx">
+      <DependentUpon>ErrorConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorLog.resx">
+      <DependentUpon>ErrorLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDisplayErrorConnection.resx">
+      <DependentUpon>frmDisplayErrorConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportProductByExcel.resx">
+      <DependentUpon>frmImportProductByExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoadSKU.resx">
+      <DependentUpon>frmLoadSKU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\frmMatrixPermission.resx">
+      <DependentUpon>frmMatrixPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMode\frmManual.resx">
+      <DependentUpon>frmManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProduct.resx">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProductEdit.resx">
+      <DependentUpon>frmProductEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelHandle\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineStatus.resx">
+      <DependentUpon>MachineStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumericKeyboard\DigitKeyPad.resx">
+      <DependentUpon>DigitKeyPad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumericKeyboard\frmKeyBoard.resx">
+      <DependentUpon>frmKeyBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumericKeyboard\Keyboard.resx">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OperationInformation.resx">
+      <DependentUpon>OperationInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConvoyerDisplay.resx">
+      <DependentUpon>ConvoyerDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMode\ConveyorManual.resx">
+      <DependentUpon>ConveyorManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMode\SwitchManManual.resx">
+      <DependentUpon>SwitchManManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeigherDisplay.resx">
+      <DependentUpon>WeigherDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeigherProcessLogging.resx">
+      <DependentUpon>WeigherProcessLogging.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ConvoyerDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConvoyerDisplay.Designer.cs">
+      <DependentUpon>ConvoyerDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelHandle\ReportExcel.cs" />
+    <Compile Include="SQLiteDatabase.cs" />
+    <Compile Include="ManualMode\ConveyorManual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManualMode\ConveyorManual.Designer.cs">
+      <DependentUpon>ConveyorManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManualMode\SwitchManManual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManualMode\SwitchManManual.Designer.cs">
+      <DependentUpon>SwitchManManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils.cs" />
+    <Compile Include="WeigherDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WeigherDisplay.Designer.cs">
+      <DependentUpon>WeigherDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeigherProcessLogging.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WeigherProcessLogging.Designer.cs">
+      <DependentUpon>WeigherProcessLogging.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AquaGauge_src\AquaGauge.csproj">
+      <Project>{0E5542E0-FC5D-4F67-950D-9F28C5D1225A}</Project>
+      <Name>AquaGauge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fx5uTcpComm\MitsubishiFx5uTcpComm.csproj">
+      <Project>{3CE453B8-E56C-4E5B-9053-C99603C12658}</Project>
+      <Name>MitsubishiFx5uTcpComm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Grouper\CodeVendor.Controls.csproj">
+      <Project>{D5D88EB0-23B9-46CE-B23C-C6245ECF023C}</Project>
+      <Name>CodeVendor.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ListView\GlacialList.csproj">
+      <Project>{BF45E961-C4A7-4634-8C9C-702AA94B009A}</Project>
+      <Name>GlacialList</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\advancedsettings16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gdm_login_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\get_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Shutdown_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shutdown_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoVL.PNG" />
+    <None Include="Resources\product_163_24x24.png" />
+    <None Include="Resources\service_manager24x24.png" />
+    <None Include="Resources\application_vnd_ms_excel.png" />
+    <None Include="Resources\gdm_login_photo24x24.png" />
+    <None Include="Resources\delete_24x24.png" />
+    <None Include="Resources\warning32x32.png" />
+    <None Include="Resources\SP_01.PNG" />
+    <None Include="Resources\setting32x32.png" />
+    <None Include="Resources\setting24x24.png" />
+    <None Include="Resources\excel_64x64.png" />
+    <None Include="Resources\START_Button.png" />
+    <None Include="Resources\STOP_Button.png" />
+    <None Include="Resources\START_Button_1_OFF.PNG" />
+    <None Include="Resources\START_Button_1_ON.PNG" />
+    <None Include="Resources\STOP_Button_1_OFF.PNG" />
+    <None Include="Resources\STOP_Button_1_ON.PNG" />
+    <None Include="Resources\Button_AUTO.PNG" />
+    <None Include="Resources\Button_MAN.PNG" />
+    <None Include="Resources\kde_folder_24x24.png" />
+    <None Include="Resources\Animation.gif" />
+    <None Include="Resources\Switch_ON.PNG" />
+    <None Include="Resources\Switch_OFF.PNG" />
+    <None Include="Resources\Switch_ENABLE.PNG" />
+    <None Include="Resources\Switch_DISABLE.PNG" />
+    <None Include="Resources\enter_key_25px.png" />
+    <None Include="Resources\backspace_25px.png" />
+    <None Include="Resources\soccer_yellow_card_25px.png" />
+    <None Include="Resources\edit_property_25px.png" />
+    <None Include="Resources\key_25px.png" />
+    <None Include="Resources\user_25px.png" />
+    <None Include="Resources\excel_24x24.png" />
+    <Content Include="weigher_icon.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

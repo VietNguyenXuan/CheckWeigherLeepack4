@@ -1,0 +1,19 @@
+I. Dự án UCC-QC
+
+ I.I Dashboard
+  1. có 2 cam:check trc, sau , Qrcode trên tuýp kem đánh răng
+  2. các thông tin cần show: total, good, NG, Reset counter => đọc PLC
+  3. các thông tin: result string, status, result cap => đọc từ PLc hoặc camera
+  4. show hình ảnh camera: 
+     4.1: camera web URL
+  5. file thông tin, SKU, template: có 1 file master data không bao giờ đổi 
+	=> soft write xuống cho Camera => sự kiện write trước mắt là change over
+  6. đọc file plan để lấy target product, sự kiện khi nào change over(không ưu tiên)
+  7. Shift quality = Total OK/ Total 
+  8. log lại thông tin người dùng với mỗi record data
+  9. "Trigger" đổi thành "Status"
+  10. thêm cột "số lượng sản phẩm lỗi liên tiếp" để nếu số lượng nhiều hơn slllt thì dừng máy ( trang setting sẽ setting giá trị này)
+  11. lưu đường dẫn hình ảnh, show image lên sw( độ ưu tiên k cao)
+
+-------------------------------------------------------------------------------------------
+ I.II
